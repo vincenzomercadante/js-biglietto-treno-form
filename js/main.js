@@ -7,18 +7,15 @@ let error = false;
 // dichiaro la variabile costo biglietto
 let ticketPrice = 0;
 
-// Dichiaro le costanti dei dati ricevuti in input
-const userKilometers = document.getElementById('inserted-kilometers');
-const userAge = document.getElementById('inserted-age');
-
 // Assegno ad una variabile il div dove scriverò il risultato
 const result = document.getElementById('result');
 const userDiscount = document.getElementById('userDiscount');
 const kilometersRecap = document.getElementById('userKilometers');
 const ageRecap = document.getElementById('userAge');
+const userName = document.getElementById('user-name');
 
 // assegno ad una variabile il ticket risultato
-const userTicket = document.getElementById('ticket');
+const userTicket = document.getElementById('ticket-container');
 console.log(userTicket);
 
 // dichiaro la costante che recupera il bottone per creare l'Event Listener
@@ -30,10 +27,12 @@ calcButton.addEventListener('click',
         let sconto = 0;
 
         // recupero valori dall'input
-        let insertKilometers = parseFloat(userKilometers.value);
+        let insertKilometers = parseFloat(document.getElementById('inserted-kilometers').value);
         console.log(insertKilometers);
-        let insertAge = userAge.value;
+        let insertAge = document.getElementById('inserted-age').value;
         console.log(insertAge);
+        let insertName = document.getElementById('inserted-name').value;
+        console.log(insertName)
 
         // verifica su input utente
         if(isNaN(insertKilometers) || isNaN(insertAge) || insertAge <= 0 || insertAge > 100){
@@ -54,8 +53,6 @@ calcButton.addEventListener('click',
                 sconto = ((ticketPrice*40)/100);
                 // console.log("C'è uno sconto di: " + sconto + "$");
                 ticketPrice -= sconto;
-            } else {
-                sconto = 'Non hai diritto ad alcun sconto';
             }
         } else {
             // stampa errore di input
@@ -69,8 +66,9 @@ calcButton.addEventListener('click',
         // stampa su pagina
         ageRecap.innerText = insertAge;
         kilometersRecap.innerText = insertKilometers;
-        userDiscount.innerText = sconto;
+        userDiscount.innerText = sconto.toFixed(2);
         result.innerText = '€ ' + ticketPrice.toFixed(2);
+        userName.innerText = insertName;
 
         // apparizione ticket
         userTicket.style.display = "block";

@@ -1,13 +1,15 @@
 :root{
     /* * PALETTE */
-
+    --primary-color: #b91450;
+    --btn-bg: #cccccc;
+    --name-area-bg: #808080;
     /* * LAYOUT */
-
 }
 
 /* ! generics */
 body{
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 ul{
@@ -24,12 +26,77 @@ img{
     width: 100%;
 }
 
-.d-flex{
+
+/* ! main */
+#main{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/treni.jpg');
+    background-size: cover;
+}
+
+.wrapper{
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0px 0px 17px 7px rgba(0,0,0,0.73);
+    text-align: center;
+    color: white;
+}
+
+.wrapper input{
+    border: 2px solid var(--primary-color);
+}
+
+.container .label-format{
+    font-weight: bold;
+    font-size: 1.3rem;
+    
+}
+
+.btn-format{
+    background-color: var(--btn-bg);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.btn:hover{
+    background-color: rgba(141, 141, 141, 0.788);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+
+/* ! ticket */
+#ticket-container{
+    display: none;
+    padding: 2rem;    
+    background-color: var(--primary-color);
+    box-shadow: 0px 0px 17px 7px rgba(0,0,0,0.73);
+    border-radius: 20px;
+}
+
+#ticket{
     display: flex;
 }
 
-/* ! ticket */
+#ticket .name-area{
+    width: 30%;
+    padding: 1rem;
+    color: #333;
+    background-color: var(--name-area-bg);
+}
+
+#ticket .value-area{
+    flex-grow: 1;
+    text-align: center;
+    padding: 10px;
+    color: var(--primary-color);
+}
+
 #ticket{
-    border: 5px dotted peru;
-    display: none;
+    background-color: #ddd;
 }
