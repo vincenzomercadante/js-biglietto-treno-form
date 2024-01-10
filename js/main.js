@@ -17,12 +17,16 @@ const userDiscount = document.getElementById('userDiscount');
 const kilometersRecap = document.getElementById('userKilometers');
 const ageRecap = document.getElementById('userAge');
 
+// assegno ad una variabile il ticket risultato
+const userTicket = document.getElementById('ticket');
+console.log(userTicket);
+
 // dichiaro la costante che recupera il bottone per creare l'Event Listener
 const calcButton = document.getElementById('calc-button');
 
 // Event Listener che intercetta il click del bottone e fà partire i controlli e il calcolo del prezzo del biglietto
 calcButton.addEventListener('click', 
-    function(){
+    function() {
         let sconto = 0;
 
         // recupero valori dall'input
@@ -65,7 +69,9 @@ calcButton.addEventListener('click',
         // stampa su pagina
         ageRecap.innerText = insertAge;
         kilometersRecap.innerText = insertKilometers;
-        userDiscount.innerText = sconto.toFixed(2);
+        userDiscount.innerText = sconto;
         result.innerText = '€ ' + ticketPrice.toFixed(2);
 
+        // apparizione ticket
+        userTicket.style.display = "block";
     })

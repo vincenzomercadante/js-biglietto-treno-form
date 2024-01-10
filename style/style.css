@@ -31,4 +31,5 @@ img{
 /* ! ticket */
 #ticket{
     border: 5px dotted peru;
+    display: none;
 }
