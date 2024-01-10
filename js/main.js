@@ -20,20 +20,28 @@ const calcButton = document.getElementById('calc-button');
 // Event Listener che intercetta il click del bottone e fà partire i controlli e il calcolo del prezzo del biglietto
 calcButton.addEventListener('click', 
     function(){
-        if(isNaN(userKilometers) || isNaN(userAge) || userKilometers <= 0 || userAge <= 0 || customerAge > 100){
+        // recupero valori dall'input
+        const insertKilometers = parseFloat(userKilometers.value);
+        console.log(insertKilometers);
+        const insertAge = userAge.value;
+        console.log(insertAge);
+
+        // verifica su input utente
+        if(isNaN(insertKilometers) || isNaN(insertAge) || insertAge <= 0 || insertAge > 100){
             error=true;
         }
         
+        // calcolo prezzo biglietto e detrazione eventuale sconto
         if(!error){
             // calcolo prezzo senza sconto
-            ticketPrice = (userKilometers * 0.21).toFixed(2);
+            ticketPrice = (insertKilometers * 0.21).toFixed(2);
             console.log('Prezzo del biglietto senza sconti: ' + ticketPrice);
             // calcolo sconto e modifica prezzo
-            if (userAge < 18){
+            if (insertAge < 18){
                 const sconto = ((ticketPrice*20)/100).toFixed(2);
                 console.log("C'è uno sconto di: " + sconto + "$");
                 ticketPrice -= sconto;
-            } else if (customerAge > 65){
+            } else if (insertAge > 65){
                 const sconto = ((ticketPrice*40)/100).toFixed(2);
                 console.log("C'è uno sconto di: " + sconto + "$");
                 ticketPrice -= sconto;
@@ -41,10 +49,12 @@ calcButton.addEventListener('click',
                 console.log("Non hai diritto ad alcun sconto mi dispiace")
             }
         } else {
+            // stampa errore di input
             alert("Inserimento Input Errati. Si prega di riprovare");
             ticketPrice = "Error";
         }
 
+        // stampa su pagina
         result.innerText = '€ ' + ticketPrice;
 
     })

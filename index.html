@@ -16,7 +16,21 @@
         <link rel="stylesheet" href="./style/style.css"> -->
     </head>
     <body>
-        
+        <div class="container m-3">
+            <!-- input per l'inserimento dati utente -->
+            <label for="inserted-kilometers">Lunghezza Viaggio</label>
+            <input type="text" class="form-control mb-3" id="inserted-kilometers" placeholder="Inserire la lunghezza in chilometri del viaggio">
+            <label for="inserted-age">Età del passeggero</label>
+            <input type="number" class="form-control mb-3" id="inserted-age" placeholder="Inserire l'età del passeggero">
+
+            <!-- bottone che invierà i dati -->
+            <input type="button" class="btn btn-primary mb-3" id="calc-button" value="INVIA">
+
+            <!-- titolo pagina -->
+            <h1>Il prezzo del biglietto è di: </h1>
+            <!-- container dove veràà stampato il risultato -->
+            <code id="result" class="fs-2"></code>
+        </div>
         
         <!-- BOOTSTRAP JS
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
