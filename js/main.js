@@ -13,6 +13,9 @@ const userAge = document.getElementById('inserted-age');
 
 // Assegno ad una variabile il div dove scriverò il risultato
 const result = document.getElementById('result');
+const userDiscount = document.getElementById('userDiscount');
+const kilometersRecap = document.getElementById('userKilometers');
+const ageRecap = document.getElementById('userAge');
 
 // dichiaro la costante che recupera il bottone per creare l'Event Listener
 const calcButton = document.getElementById('calc-button');
@@ -20,10 +23,12 @@ const calcButton = document.getElementById('calc-button');
 // Event Listener che intercetta il click del bottone e fà partire i controlli e il calcolo del prezzo del biglietto
 calcButton.addEventListener('click', 
     function(){
+        let sconto = 0;
+
         // recupero valori dall'input
-        const insertKilometers = parseFloat(userKilometers.value);
+        let insertKilometers = parseFloat(userKilometers.value);
         console.log(insertKilometers);
-        const insertAge = userAge.value;
+        let insertAge = userAge.value;
         console.log(insertAge);
 
         // verifica su input utente
@@ -34,27 +39,33 @@ calcButton.addEventListener('click',
         // calcolo prezzo biglietto e detrazione eventuale sconto
         if(!error){
             // calcolo prezzo senza sconto
-            ticketPrice = (insertKilometers * 0.21).toFixed(2);
-            console.log('Prezzo del biglietto senza sconti: ' + ticketPrice);
+            ticketPrice = (insertKilometers * 0.21);
+            // console.log('Prezzo del biglietto senza sconti: ' + ticketPrice);
             // calcolo sconto e modifica prezzo
             if (insertAge < 18){
-                const sconto = ((ticketPrice*20)/100).toFixed(2);
-                console.log("C'è uno sconto di: " + sconto + "$");
+                sconto = ((ticketPrice*20)/100);
+                // console.log("C'è uno sconto di: " + sconto + "$");
                 ticketPrice -= sconto;
             } else if (insertAge > 65){
-                const sconto = ((ticketPrice*40)/100).toFixed(2);
-                console.log("C'è uno sconto di: " + sconto + "$");
+                sconto = ((ticketPrice*40)/100);
+                // console.log("C'è uno sconto di: " + sconto + "$");
                 ticketPrice -= sconto;
             } else {
-                console.log("Non hai diritto ad alcun sconto mi dispiace")
+                sconto = 'Non hai diritto ad alcun sconto';
             }
         } else {
             // stampa errore di input
             alert("Inserimento Input Errati. Si prega di riprovare");
             ticketPrice = "Error";
+            sconto = "Error";
+            insertAge = "Error";
+            insertKilometers = "Error";
         }
 
         // stampa su pagina
-        result.innerText = '€ ' + ticketPrice;
+        ageRecap.innerText = insertAge;
+        kilometersRecap.innerText = insertKilometers;
+        userDiscount.innerText = sconto.toFixed(2);
+        result.innerText = '€ ' + ticketPrice.toFixed(2);
 
     })

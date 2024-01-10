@@ -28,3 +28,7 @@ img{
     display: flex;
 }
 
+/* ! ticket */
+#ticket{
+    border: 5px dotted peru;
+}
