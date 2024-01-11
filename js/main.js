@@ -35,7 +35,7 @@ calcButton.addEventListener('click',
         console.log(insertName)
 
         // verifica su input utente
-        if(isNaN(insertKilometers) || isNaN(insertAge) || insertAge <= 0 || insertAge > 100){
+        if(!insertName || isNaN(insertKilometers) || isNaN(insertAge) || insertAge <= 0 || insertAge > 100){
             error=true;
         }
         
