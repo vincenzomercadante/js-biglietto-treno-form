@@ -57,10 +57,7 @@ calcButton.addEventListener('click',
         } else {
             // stampa errore di input
             alert("Inserimento Input Errati. Si prega di riprovare");
-            ticketPrice = "Error";
-            sconto = "Error";
-            insertAge = "Error";
-            insertKilometers = "Error";
+
         }
 
         // stampa su pagina
@@ -72,4 +69,8 @@ calcButton.addEventListener('click',
 
         // apparizione ticket
         userTicket.style.display = "block";
-    })
+        // reset campi form
+        document.getElementById('inserted-name').value = "";
+        document.getElementById('inserted-kilometers').value = "";
+        document.getElementById('inserted-age').value = "";
+    });
